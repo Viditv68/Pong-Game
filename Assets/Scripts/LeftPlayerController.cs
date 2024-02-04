@@ -26,11 +26,6 @@ public class LeftPlayerController : MonoBehaviour
     {
         rb.velocity = direction * speed;
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject.name);
-
-        rb.velocity = Vector3.Reflect(rb.velocity.normalized, collision.contacts[0].normal) * speed;
-    }
 }
+
+ 
