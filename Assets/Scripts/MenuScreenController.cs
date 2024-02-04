@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 public class MenuScreenController : MonoBehaviour
 {
+
+    #region [======= Button Variables =========]
     [SerializeField] private Button playButton;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button quitButton;
     [SerializeField] private Button resetButton;
+    #endregion
 
     [SerializeField] private SphereController sphereController;
     
@@ -23,16 +26,12 @@ public class MenuScreenController : MonoBehaviour
         SetButtonsStatus();
     }
 
-    public void SetButtonsStatus()
-    {
-        playButton.gameObject.SetActive(!uiManager.isGamePause);
-        resetButton.gameObject.SetActive(uiManager.isGamePause);
-        resumeButton.gameObject.SetActive(uiManager.isGamePause);
-    }
+ 
     #region [============ Button===========]
     public void PlayGame()
     {
         sphereController.gameObject.SetActive(true);
+        uiManager.ResetScore();
         DisablMenuScreen();
     }
 
@@ -56,6 +55,12 @@ public class MenuScreenController : MonoBehaviour
 
     #endregion
 
+    public void SetButtonsStatus()
+    {
+        playButton.gameObject.SetActive(!uiManager.isGamePause);
+        resetButton.gameObject.SetActive(uiManager.isGamePause);
+        resumeButton.gameObject.SetActive(uiManager.isGamePause);
+    }
     private void DisablMenuScreen()
     {
         this.gameObject.SetActive(false);

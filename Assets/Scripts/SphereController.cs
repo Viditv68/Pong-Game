@@ -6,6 +6,8 @@ public class SphereController : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed;
+    [SerializeField] private AudioClip hitSfx;
+    [SerializeField] private AudioSource audioSource;
     //[SerializeField] private ScoreManager scoreManager;
     // Start is called before the first frame update
     void Start()
@@ -35,7 +37,7 @@ public class SphereController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name);
-
+        audioSource.PlayOneShot(hitSfx);
         rb.velocity = Vector3.Reflect(rb.velocity.normalized, collision.contacts[0].normal) * speed;
 
         if(collision.gameObject.name == "LeftWall")
