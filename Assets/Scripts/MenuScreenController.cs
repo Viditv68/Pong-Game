@@ -31,6 +31,7 @@ public class MenuScreenController : MonoBehaviour
     public void PlayGame()
     {
         sphereController.gameObject.SetActive(true);
+        sphereController.resetSpherePosition();
         uiManager.ResetScore();
         DisablMenuScreen();
     }
@@ -51,9 +52,12 @@ public class MenuScreenController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 
-    #endregion
+#endregion
 
     public void SetButtonsStatus()
     {
@@ -66,6 +70,7 @@ public class MenuScreenController : MonoBehaviour
         this.gameObject.SetActive(false);
         Time.timeScale = 1;
         uiManager.isGamePause = false;
+        uiManager.isInMainMenu = false;
         uiManager.pauseButton.gameObject.SetActive(true);
     }
 }

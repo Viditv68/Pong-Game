@@ -18,8 +18,12 @@ public class LeftPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float vertical = Input.GetAxis("Vertical");
-        direction = new Vector3(0, 0, vertical).normalized;
+        if(!UIManager.manager.isInMainMenu || UIManager.manager.isGamePause)
+        {
+            float vertical = Input.GetAxis("Vertical");
+            direction = new Vector3(0, 0, vertical).normalized;
+        }
+ 
     }
 
     private void FixedUpdate()

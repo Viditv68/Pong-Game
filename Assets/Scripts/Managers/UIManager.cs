@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI winScreenText;
 
     public bool isGamePause = false;
+    public bool isInMainMenu = true;
 
     public static UIManager manager;
 
